@@ -11,17 +11,174 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 55, 55, 55;
+    --background-end-rgb: 33, 33, 33;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: linear-gradient(240deg, rgb(38 38 38), rgb(23 23 23));
+  background-size: 300% 300%;
+
+  -webkit-animation: backgroundAnimation 35s ease infinite;
+  -moz-animation: backgroundAnimation 35s ease infinite;
+  -o-animation: backgroundAnimation 35s ease infinite;
+  animation: backgroundAnimation 35s ease infinite;
+}
+
+.highlight {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-size: 300% 300% !important;
+    background-position: 0 50%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.25rem;
+    background: linear-gradient(60deg,
+        hsl(256, 68%, 55%),
+        hsl(269, 85%, 66%),
+        hsl(261, 46%, 74%),
+        hsl(314, 85%, 66%),
+        hsl(37, 95%, 56%));
+    animation: backgroundAnimate 3s alternate infinite;
+  }
+}
+
+.text-highlight {
+  position: relative;
+  display: flex;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-size: 300% 300% !important;
+    background-position: 0 50%;
+    width: 4px;
+    height: 100px;
+    left: -1.25rem;
+    top: 0;
+    background: linear-gradient(60deg,
+        hsl(256, 68%, 55%),
+        hsl(269, 85%, 66%),
+        hsl(261, 46%, 74%),
+        hsl(314, 85%, 66%),
+        hsl(37, 95%, 56%));
+    animation: backgroundAnimate 3s alternate infinite;
+  }
+}
+
+@keyframes backgroundAnimate {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* SVG Title */
+.svg-container {
+  height: auto;
+  overflow: auto;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+}
+
+svg text {
+  text-transform: uppercase;
+  animation: stroke 4s infinite alternate;
+  stroke-width: 2;
+  stroke: #fff;
+  font-size: 140px;
+}
+
+@keyframes stroke {
+  0% {
+    fill: transparent;
+    stroke: rgba(255, 255, 255, .4);
+    stroke-dashoffset: 25%;
+    stroke-dasharray: 0 50%;
+    stroke-width: 2;
+  }
+
+  70% {
+    stroke: rgba(255, 255, 255, .6);
+  }
+
+  80% {
+    stroke: rgba(255, 255, 255, .8);
+    stroke-width: 3;
+  }
+
+  100% {
+    fill: #fff;
+    stroke: rgba(54, 95, 160, 0);
+    stroke-dashoffset: -25%;
+    stroke-dasharray: 50% 0;
+    stroke-width: 0;
+  }
+}
+
+/* Body BG Animations */
+@-webkit-keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-moz-keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@-o-keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
+}
+
+@keyframes backgroundAnimation {
+  0% {
+    background-position: 0% 50%
+  }
+
+  50% {
+    background-position: 100% 50%
+  }
+
+  100% {
+    background-position: 0% 50%
+  }
 }

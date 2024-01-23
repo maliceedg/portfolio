@@ -11,7 +11,7 @@ export default function Home() {
       {/* <h3 className={`${inter.className} text-5xl`}>Welcome.</h3> */}
       <div className='svg-container lg:w-96 w-full'>
         <svg viewBox="0 0 750 150">
-          <text x="50%" y="50%" dy=".35em" text-anchor="middle" className={`${roboto.className}`}>
+          <text x="50%" y="50%" dy=".35em" textAnchor="middle" className={`${roboto.className}`}>
             Welcome.
           </text>
         </svg>

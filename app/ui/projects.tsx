@@ -1,7 +1,7 @@
 const projects = [
   { name: 'PixelUniverse+', href: 'https://pixeluniverseplus.com' },
   { name: 'Prueba', href: 'google.com' },
-  { name: 'Prueba', href: 'google.com' },
+  { name: 'Prueba1', href: 'google2.com' },
 ]
 
 export default function Projects() {
@@ -10,9 +10,9 @@ export default function Projects() {
       <div>
         <h3 className="text-3xl">Projects</h3>
         <ul className="mt-6">
-          {projects.map((project) => {
+          {projects.map((project, i) => {
             return (
-              <li className="mt-2 text-lg">
+              <li key={i} className="mt-2 text-lg">
                 <a href={project.href}>{project.name}</a>
               </li>
             )

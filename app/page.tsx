@@ -8,7 +8,6 @@ export default function Home() {
     <main className="min-h-screen lg:w-2/3 w-full flex flex-col justify-center lg:p-24 p-5 lg:mx-auto tracking-wide">
       <Nav />
       {/* Title */}
-      {/* <h3 className={`${inter.className} text-5xl`}>Welcome.</h3> */}
       <div className='svg-container lg:w-96 w-full'>
         <svg viewBox="0 0 750 150">
           <text x="50%" y="50%" dy=".35em" textAnchor="middle" className={`${roboto.className}`}>

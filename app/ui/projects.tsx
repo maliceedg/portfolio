@@ -1,5 +1,15 @@
+import clsx from "clsx";
+import Link from "next/link";
+
 const projects = [
-  { name: 'PixelUniverse+', href: 'https://pixeluniverseplus.com' },
+  {
+    name: 'PixelUniverse+', href: {
+      pathname: '/pages/projects',
+      query: {
+        project: 'pixel',
+      }
+    }
+  },
   { name: 'Prueba', href: 'google.com' },
   { name: 'Prueba1', href: 'google2.com' },
 ]
@@ -10,14 +20,19 @@ export default function Projects() {
       <div>
         <h3 className="text-3xl">Projects</h3>
         <ul className="mt-6">
-          {projects.map((project, i) => {
+          {projects.map((project) => {
             return (
-              <li key={i} className="mt-2 text-lg">
-                <a href={project.href}>{project.name}</a>
-              </li>
-            )
-          })
-          }
+              <Link
+                key={project.name}
+                href={project.href}
+                className={clsx(
+                  'flex h-[48px] grow items-center justify-start font-medium text-lg md:flex-none md:justify-start md:p-2 md:px-3 md:m-0 m-4 hover:text-gray-500 duration-200'
+                )}
+              >
+                <p className="hidden md:block text-highlight">{project.name}</p>
+              </Link>
+            );
+          })}
         </ul>
       </div>
     </main>

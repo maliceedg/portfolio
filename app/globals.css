@@ -16,16 +16,16 @@
   }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(240deg, rgb(38 38 38), rgb(23 23 23));
   background-size: 300% 300%;
+  background: linear-gradient(240deg, rgb(38 38 38), rgb(23 23 23));
 
   -webkit-animation: backgroundAnimation 35s ease infinite;
   -moz-animation: backgroundAnimation 35s ease infinite;
   -o-animation: backgroundAnimation 35s ease infinite;
   animation: backgroundAnimation 35s ease infinite;
-}
+} */
 
 .highlight {
   position: relative;
@@ -60,17 +60,17 @@ body {
     content: "";
     background-size: 300% 300% !important;
     background-position: 0 50%;
-    width: 4px;
-    height: 100px;
-    left: -1.25rem;
-    top: 0;
+    width: 5px;
+    height: 15px;
+    left: -1rem;
+    top: 6px;
     background: linear-gradient(60deg,
         hsl(256, 68%, 55%),
         hsl(269, 85%, 66%),
         hsl(261, 46%, 74%),
         hsl(314, 85%, 66%),
         hsl(37, 95%, 56%));
-    animation: backgroundAnimate 3s alternate infinite;
+    animation: backgroundAnimate 1s alternate infinite;
   }
 }
 
@@ -95,30 +95,30 @@ svg text {
   text-transform: uppercase;
   animation: stroke 4s infinite alternate;
   stroke-width: 2;
-  stroke: #fff;
+  stroke: #111827;
   font-size: 140px;
 }
 
 @keyframes stroke {
   0% {
     fill: transparent;
-    stroke: rgba(255, 255, 255, .4);
+    stroke: rgba(13, 24, 39, .4);
     stroke-dashoffset: 25%;
     stroke-dasharray: 0 50%;
     stroke-width: 2;
   }
 
   70% {
-    stroke: rgba(255, 255, 255, .6);
+    stroke: rgba(13, 24, 39, .6);
   }
 
   80% {
-    stroke: rgba(255, 255, 255, .8);
+    stroke: rgba(13, 24, 39, .8);
     stroke-width: 3;
   }
 
   100% {
-    fill: #fff;
+    fill: rgba(13, 24, 39);
     stroke: rgba(54, 95, 160, 0);
     stroke-dashoffset: -25%;
     stroke-dasharray: 50% 0;

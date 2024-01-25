@@ -17,33 +17,30 @@ export default function Nav() {
   const pathname = usePathname();
 
   return (
-    <div className="mb-10">
-      <nav>
-        <div className="flex flex-wrap justify-between items-center mx-auto min-w-screen py-4">
-          <a href="https://flowbite.com" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-            <span className={`${inter.className} self-center text-3xl whitespace-nowrap dark:text-white`}>Edgardo</span>
-          </a>
-          <div className="flex items-center space-x-6 rtl:space-x-reverse">
-            {links.map((link, i) => {
-              const LinkIcon = link.icon;
-              return (
-                <Link
-                  href={link.href}
-                  key={i}
-                  className={clsx(
-                    'flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3',
-                    {
-                      'bg-sky-100 text-blue-600': pathname === link.href,
-                    },
-                  )}
-                >
-                  <LinkIcon className="w-6" /></Link>
-              );
-            })}
-          </div>
+    <nav
+      className='mb-10 relative z-20'
+    >
+      <div className="container flex flex-wrap justify-between items-center mx-auto min-w-screen lg:py-5 p-5">
+        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
+          <span className={`${inter.className} self-center text-3xl whitespace-nowrap text-gray-900`}>Edgardo</span>
+        </a>
+        <div className="flex items-center space-x-6 rtl:space-x-reverse">
+          {links.map((link, i) => {
+            const LinkIcon = link.icon;
+            return (
+              <Link
+                href={link.href}
+                key={i}
+                className={clsx(
+                  'flex h-[48px] grow items-center justify-center gap-2 rounded-md p-3 text-sm font-medium hover:text-gray-500 duration-200 md:flex-none md:justify-start md:p-2 md:px-3'
+                )}
+              >
+                <LinkIcon className="w-6" /></Link>
+            );
+          })}
         </div>
-      </nav>
-    </div>
+      </div>
+    </nav>
   )
 }

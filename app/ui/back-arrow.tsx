@@ -6,11 +6,10 @@ export default function BackArrow() {
   return (
     <Link
       href={'/'}
+      className="w-24 flex items-center mb-5 duration-200 hover:text-gray-500"
     >
-      <div className="flex">
-        <LinkIcon className="w-6" />
-        <span className="ms-3">go back</span>
-      </div>
+      <LinkIcon className="w-6" />
+      <span className="ms-3 w-full">Go Back</span>
     </Link>
   )
 }

@@ -8,8 +8,10 @@ export default function BounceArrow() {
   return (
     <Link
       href={'/'}
+      className="sticky"
+      style={{float: 'right', bottom: 0}}
     >
-      <div className="w-16 h-16 animate-bounce rounded-full bg-gray-900 absolute right-0 bottom-0 text-white flex justify-center items-center me-5 mb-5 shadow-lg">
+      <div className="w-16 h-16 animate-bounce rounded-full bg-gray-900 text-white flex justify-center items-center me-5 mb-5 shadow-lg">
         <LinkIcon className="w-6" />
       </div>
     </Link>

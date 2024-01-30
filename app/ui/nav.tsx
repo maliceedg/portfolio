@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation"; // Figure out in which view the u
 import Link from 'next/link';
 import clsx from 'clsx';
 import { inter } from "../../app/ui/fonts";
+import Image from "next/image";
 
 const links = [
   { href: 'mailto:edgardogonzp@gmail.com', icon: EnvelopeIcon },
@@ -22,7 +23,11 @@ export default function Nav() {
     >
       <div className="container flex flex-wrap justify-between items-center mx-auto min-w-screen lg:py-5 p-5">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="/logo.webp" className="h-8" alt="Maliceedg Logo" />
+          <Image src="/logo.webp"
+            height={30}
+            width={54}
+            alt="Maliceedg Logo"
+            className="h-8" />
           <span className={`${inter.className} self-center lg:text-4xl md:text-3xl text-2xl whitespace-nowrap text-gray-900`}>Edgardo</span>
         </a>
         <div className="flex items-center space-x-6 rtl:space-x-reverse">

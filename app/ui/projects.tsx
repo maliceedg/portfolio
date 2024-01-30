@@ -10,8 +10,22 @@ const projects = [
       }
     }
   },
-  { name: 'Prueba', href: 'google.com' },
-  { name: 'Prueba1', href: 'google2.com' },
+  {
+    name: 'TheBiznation', href: {
+      pathname: '/pages/projects',
+      query: {
+        project: 'tbn',
+      }
+    }
+  },
+  {
+    name: 'Angeles', href: {
+      pathname: '/pages/projects',
+      query: {
+        project: 'angeles',
+      }
+    }
+  },
 ]
 
 export default function Projects() {

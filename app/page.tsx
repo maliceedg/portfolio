@@ -1,13 +1,17 @@
 'use client';
 
-import Nav from "@/app/ui/nav";
+// Components
+import Nav from "./ui/nav";
+import Footer from "./ui/footer";
 import Projects from "@/app/ui/projects";
+
+// Utilities
 import { roboto } from "../app/ui/fonts";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <main>
+    <main className="relative">
       <Nav />
       <AnimatePresence mode="wait">
         <motion.div
@@ -15,9 +19,9 @@ export default function Home() {
           animate={{ y: '0%' }}
           transition={{ duration: .75, ease: 'easeOut' }}
           exit={{ opacity: 1 }}
-          className='min-h-screen min-w-full flex flex-col justify-center bg-orange-100 text-gray-900 absolute top-0'>
+          className='min-h-screen min-w-full flex flex-col justify-center bg-orange-100 text-gray-900 relative top-0'>
 
-          <div className="container flex flex-col justify-center lg:p-0 p-5 lg:mx-auto tracking-wide lg:mt-0 mt-32">
+          <div className="container flex flex-col justify-center lg:p-0 p-5 lg:mx-auto tracking-wide lg:mt-0 mt-32 md:mb-0 mb-24">
 
             {/* Title */}
             <div className='svg-container lg:w-96 w-full'>
@@ -33,10 +37,11 @@ export default function Home() {
               <div className='lg:basis-2/4 highlight p-1 shadow-lg'>
                 <div className='bg-orange-100 h-full p-5 flex'>
                   <p className='text-base m-auto'>
-                    Nam vel ligula lobortis, volutpat justo non, semper lorem. Nulla facilisi.
-                    <br />
-                    Nam nisi ex, varius sed velit bibendum, faucibus tempus tellus.
-                    Fusce egestas, risus nec dapibus placerat, ligula quam mattis ipsum, ut mollis diam purus in erat.
+                    My name is Edgardo Gonzalez, a COMPSI Engineer based in Carabobo, Venezuela. <br /> <br />
+
+                    I have 7+ years of experience in the development field, in which I've partaken in multiple projects, mostly frontend, from inventory systems to modern LMS platforms. <br /> <br />
+
+                    I'm passionate for user-friendly interfaces, quick systems, and clean interfaces.
                   </p>
                 </div>
 
@@ -49,10 +54,8 @@ export default function Home() {
             </div>
           </div>
 
-          <footer>
-            hey
-          </footer>
         </motion.div>
+        <Footer />
       </AnimatePresence>
     </main>
   )

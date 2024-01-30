@@ -15,7 +15,7 @@ export default function Page(
 
   function ActiveProject() {
     const project = projects.map((element, i) => {
-      console.log(element.id);      
+      console.log(element.id);
     })
   }
 
@@ -47,7 +47,7 @@ export default function Page(
                   {/* Logo */}
                   <div className="md:basis-1/2">
                     <Image
-                      key={project.id}
+                      key={project.id + 1}
                       src={project.logo}
                       width={500}
                       height={400}

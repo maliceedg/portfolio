@@ -39,9 +39,9 @@ export default function Home() {
                   <p className='text-base m-auto'>
                     My name is Edgardo Gonzalez, a COMPSI Engineer based in Carabobo, Venezuela. <br /> <br />
 
-                    I have 7+ years of experience in the development field, in which I've partaken in multiple projects, mostly frontend, from inventory systems to modern LMS platforms. <br /> <br />
+                    I have 7+ years of experience in the development field, in which I&#39;ve partaken in multiple projects, mostly frontend, from inventory systems to modern LMS platforms. <br /> <br />
 
-                    I'm passionate for user-friendly interfaces, quick systems, and clean interfaces.
+                    I&#39;m passionate for user-friendly interfaces, quick systems, and clean interfaces.
                   </p>
                 </div>
 

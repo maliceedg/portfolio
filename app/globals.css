@@ -6,26 +6,51 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+
+  --background-color: #ffffff;
+  --text-color: #000000;
+  --card-bg: rgba(255, 255, 255, 0.1);
+  --gradient: linear-gradient(45deg, #fb9d5c, #fbab73, #fdc7a2);
+  --shapes: url("/light-shapes.svg");
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 55, 55, 55;
-    --background-end-rgb: 33, 33, 33;
-  }
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 55, 55, 55;
+  --background-end-rgb: 33, 33, 33;
+
+  --background-color: #121212;
+  --text-color: #f1f1f1;
+  --card-bg: rgba(0, 0, 0, 0.4);
+  --gradient: linear-gradient(45deg, #2c3e50, #34495e, #22313f);
+  --shapes: url("/dark-shapes.svg");
 }
 
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background-size: 300% 300%;
-  background: linear-gradient(240deg, rgb(38 38 38), rgb(23 23 23));
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
 
-  -webkit-animation: backgroundAnimation 35s ease infinite;
-  -moz-animation: backgroundAnimation 35s ease infinite;
-  -o-animation: backgroundAnimation 35s ease infinite;
-  animation: backgroundAnimation 35s ease infinite;
-} */
+[data-theme="dark"] {
+  --background-color: #121212;
+  --text-color: #f1f1f1;
+  --card-bg: rgba(0, 0, 0, 0.5);
+  --gradient: linear-gradient(45deg, #2c3e50, #34495e, #22313f);
+  --shapes: url("/dark-shapes.svg");
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
 
 .highlight {
   position: relative;
@@ -41,12 +66,14 @@
     width: 100%;
     height: 100%;
     border-radius: 0.25rem;
-    background: linear-gradient(60deg,
-        hsl(256, 68%, 55%),
-        hsl(269, 85%, 66%),
-        hsl(261, 46%, 74%),
-        hsl(314, 85%, 66%),
-        hsl(37, 95%, 56%));
+    background: linear-gradient(
+      60deg,
+      hsl(256, 68%, 55%),
+      hsl(269, 85%, 66%),
+      hsl(261, 46%, 74%),
+      hsl(314, 85%, 66%),
+      hsl(37, 95%, 56%)
+    );
     animation: backgroundAnimate 3s alternate infinite;
   }
 }
@@ -64,12 +91,14 @@
     height: 15px;
     left: -1rem;
     top: 6px;
-    background: linear-gradient(60deg,
-        hsl(256, 68%, 55%),
-        hsl(269, 85%, 66%),
-        hsl(261, 46%, 74%),
-        hsl(314, 85%, 66%),
-        hsl(37, 95%, 56%));
+    background: linear-gradient(
+      60deg,
+      hsl(256, 68%, 55%),
+      hsl(269, 85%, 66%),
+      hsl(261, 46%, 74%),
+      hsl(314, 85%, 66%),
+      hsl(37, 95%, 56%)
+    );
     animation: backgroundAnimate 1s alternate infinite;
   }
 }
@@ -102,18 +131,18 @@ svg text {
 @keyframes stroke {
   0% {
     fill: transparent;
-    stroke: rgba(13, 24, 39, .4);
+    stroke: rgba(13, 24, 39, 0.4);
     stroke-dashoffset: 25%;
     stroke-dasharray: 0 50%;
     stroke-width: 2;
   }
 
   70% {
-    stroke: rgba(13, 24, 39, .6);
+    stroke: rgba(13, 24, 39, 0.6);
   }
 
   80% {
-    stroke: rgba(13, 24, 39, .8);
+    stroke: rgba(13, 24, 39, 0.8);
     stroke-width: 3;
   }
 
@@ -129,56 +158,56 @@ svg text {
 /* Body BG Animations */
 @-webkit-keyframes backgroundAnimation {
   0% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 
   50% {
-    background-position: 100% 50%
+    background-position: 100% 50%;
   }
 
   100% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 }
 
 @-moz-keyframes backgroundAnimation {
   0% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 
   50% {
-    background-position: 100% 50%
+    background-position: 100% 50%;
   }
 
   100% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 }
 
 @-o-keyframes backgroundAnimation {
   0% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 
   50% {
-    background-position: 100% 50%
+    background-position: 100% 50%;
   }
 
   100% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 }
 
 @keyframes backgroundAnimation {
   0% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 
   50% {
-    background-position: 100% 50%
+    background-position: 100% 50%;
   }
 
   100% {
-    background-position: 0% 50%
+    background-position: 0% 50%;
   }
 }

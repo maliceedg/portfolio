@@ -32,6 +32,10 @@ const AnimatedBackground = () => (
 export default function Home() {
   return (
     <>
+      <Head>
+        <title>My Portfolio - Welcome</title>
+        <meta name="description" content="Welcome to my portfolio" />
+      </Head>
       <div className={styles.container}>
         <motion.div
           className={styles.card}

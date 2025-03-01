@@ -29,6 +29,22 @@ const AnimatedBackground = () => (
   </svg>
 );
 
+const defaultAnimations = {
+  hidden: {
+    opacity: 0,
+    x: -50,
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+  },
+};
+
+const letterAnimations = {
+  hidden: { opacity: 0, y: 50, scale: 0.5, rotate: -45 },
+  visible: { opacity: 1, y: 0, scale: 1.2, rotate: 0 },
+};
+
 export default function Home() {
   return (
     <>
@@ -38,18 +54,48 @@ export default function Home() {
       </Head>
       <div className={styles.container}>
         <motion.div
-          className={styles.card}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 1, ease: "easeOut", staggerChildren: 0.1 }}
         >
-          <h1 className="flex flex-col mb-4">
-            <span className="text-xl font-light">Welcome</span>
-            <span className="text-xl font-bold">to My Portfolio</span>
+          <h1 className="flex flex-col mb-6">
+            <motion.span className="text-2xl font-light">
+              {Array.from("Welcome").map((letter, index) => (
+                <motion.span
+                  key={index}
+                  variants={letterAnimations}
+                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </motion.span>
+            <span className="text-2xl font-bold">to My Portfolio</span>
           </h1>
-          <p>Hi, I'm [Your Name]. I build awesome projects.</p>
-          <Link href="/projects">See My Projects</Link>
         </motion.div>
+        <motion.div
+          className={styles.card}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 1, ease: "easeOut", staggerChildren: 0.1 }}
+        >
+          <p className="mb-4">
+            My name is Edgardo Gonzalez, a COMPSI Engineer based in Carabobo,
+            Venezuela.
+          </p>
+          <p className="mb-4">
+            I have 7+ years of experience in the development field, in which
+            I've partaken in multiple projects, mostly frontend, from inventory
+            systems to modern LMS platforms.
+          </p>
+          <p>
+            I'm passionate for user-friendly interfaces, quick systems, and
+            clean interfaces.
+          </p>
+        </motion.div>
+        <Link href="/projects" className={styles.glassButton}>
+          See My Projects
+        </Link>
       </div>
     </>
   );

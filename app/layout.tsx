@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  readonly children: React.ReactNode;
 }) {
   return (
     <html lang="en" className="md:overflow-hidden overflow-auto">
       <body className={inter.className}>
         <Nav />
-        <div style={{ paddingTop: "65px" }}>
+        <div>
           <TransitionLayout>{children}</TransitionLayout>
         </div>
       </body>

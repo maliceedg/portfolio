@@ -15,12 +15,12 @@ export default function TransitionLayout({
       <motion.div
         key={pathname}
         style={{ width: "100%", height: "100%" }}
-        initial={{ opacity: 0, x: 10, y: 10 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={{
           opacity: 1,
           x: 0,
           y: 0,
-          transitionEnd: { opacity: 1, x: 0, y: 0 },
+          transitionEnd: { opacity: 1, y: 0 },
         }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.4, ease: "easeOut" }}

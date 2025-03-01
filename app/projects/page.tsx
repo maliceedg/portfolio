@@ -6,11 +6,12 @@ import Link from "next/link";
 import { inter } from "../ui/fonts";
 import { projects } from "@/app/lib/projects";
 import Footer from "@/app/ui/footer";
+import styles from "../styles/projects.module.css";
 
 export default function Page({
   searchParams,
 }: {
-  searchParams: { project?: string };
+  readonly searchParams: { readonly project?: string };
 }) {
   const param = searchParams.project;
   const activeProject = projects.find((project) => project.id === param);
@@ -21,9 +22,10 @@ export default function Page({
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
       exit={{ opacity: 1 }}
-      className="h-full absolute min-w-full top-0 lg:pt-40 pt-28 lg:p-0 p-5 overflow-auto"
+      className={styles.container}
+      /* className="h-full absolute min-w-full top-0 lg:pt-40 pt-28 lg:p-0 p-5 overflow-auto" */
     >
-      <div className="container flex flex-col justify-center mx-auto">
+      <div className="container flex flex-col justify-center mx-auto md:mt-32 mt-16 lg:p-4 md:p-3 p-5">
         {activeProject ? (
           // Detail View for a Single Project
           <div key={activeProject.id}>
@@ -68,8 +70,8 @@ export default function Page({
                 <motion.div
                   key={project.id}
                   whileHover={{
-                    scale: 1.05,
-                    boxShadow: "0px 8px 30px rgba(0, 0, 0, 0.3)",
+                    scale: 1.02,
+                    boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.3)",
                   }}
                   whileTap={{ scale: 0.95 }}
                   transition={{ duration: 0.3 }}
@@ -92,7 +94,6 @@ export default function Page({
           </>
         )}
       </div>
-      <Footer />
     </motion.main>
   );
 }

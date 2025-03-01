@@ -9,9 +9,10 @@
 
   --background-color: #ffffff;
   --text-color: #000000;
-  --card-bg: rgba(255, 255, 255, 0.1);
-  --gradient: linear-gradient(45deg, #fb9d5c, #fbab73, #fdc7a2);
+  --card-bg: rgba(255, 255, 255, .1);
+  --gradient: linear-gradient(45deg, #8b95a0, #d5d5d5, #a4afba, #7b858e);
   --shapes: url("/light-shapes.svg");
+  --noise: url("/noise-texture.png");
 }
 
 .dark {
@@ -19,30 +20,27 @@
   --background-start-rgb: 55, 55, 55;
   --background-end-rgb: 33, 33, 33;
 
-  --background-color: #121212;
+  --background-color: #161f28;
   --text-color: #f1f1f1;
   --card-bg: rgba(0, 0, 0, 0.4);
-  --gradient: linear-gradient(45deg, #2c3e50, #34495e, #22313f);
+  --gradient: linear-gradient(45deg, #040608, #161f28, #1e262f, #090c10);
   --shapes: url("/dark-shapes.svg");
+  --noise: url("/noise-texture.png");
 }
 
 body {
   background-color: var(--background-color);
+  overflow-y: auto;
   color: var(--text-color);
 }
 
 [data-theme="dark"] {
-  --background-color: #121212;
+  --background-color: #161f28;
   --text-color: #f1f1f1;
-  --card-bg: rgba(0, 0, 0, 0.5);
-  --gradient: linear-gradient(45deg, #2c3e50, #34495e, #22313f);
+  --card-bg: rgba(0, 0, 0, 0.4);
+  --gradient: linear-gradient(45deg, #040608, #161f28, #1e262f, #090c10);
   --shapes: url("/dark-shapes.svg");
-}
-
-body {
-  background-color: var(--background-color);
-  color: var(--text-color);
-  transition: background-color 0.5s ease, color 0.5s ease;
+  --noise: url("/noise-texture.png");
 }
 
 html,

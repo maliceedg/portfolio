@@ -73,9 +73,9 @@ const EnhancedCard = () => {
           animate="visible"
           variants={paragraphVariants}
         >
-          I have 7+ years of experience in the development field, in which I've
-          partaken in multiple projects, mostly frontend, from inventory systems
-          to modern LMS platforms.
+          I have 7+ years of experience in the development field, in which
+          I&apos;ve partaken in multiple projects, mostly frontend, from
+          inventory systems to modern LMS platforms.
         </motion.p>
 
         <motion.p
@@ -84,8 +84,8 @@ const EnhancedCard = () => {
           animate="visible"
           variants={paragraphVariants}
         >
-          I'm passionate for user-friendly interfaces, quick systems, and clean
-          interfaces.
+          I&apos;m passionate for user-friendly interfaces, quick systems, and
+          clean interfaces.
         </motion.p>
       </div>
     </motion.div>

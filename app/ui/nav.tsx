@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "../styles/nav.module.css";
+import Image from "next/image";
 
 export default function Nav() {
   const [theme, setTheme] = useState("light");
@@ -35,7 +36,7 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <img src="/logo.webp" alt="Origami Crane Logo" className={styles.logo}/>
+        <Image src="/logo.webp" alt="Origami Crane Logo" className={styles.logo}/>
       </Link>
       <button onClick={toggleTheme} className={styles.toggleButton}>
         {theme === "light" ? (

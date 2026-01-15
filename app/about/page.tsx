@@ -1,6 +1,7 @@
 import Link from "next/link";
 import styles from "../styles/about.module.css";
 import { inter } from "../ui/fonts";
+import Image from "next/image";
 
 export default function AboutPage() {
   return (
@@ -18,7 +19,7 @@ export default function AboutPage() {
           </div>
 
           <div className="flex flexwrap gap-6 items-center">
-            <img src="/profile-pic.png" alt="Profile" className="w-32 h-32 border border-white/15 rounded-full" />
+            <Image src="/profile-pic.png" alt="Profile" className="w-32 h-32 border border-white/15 rounded-full" />
 
             <div>
               <h1 className="text-4xl leading-tight">

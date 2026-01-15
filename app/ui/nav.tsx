@@ -35,7 +35,7 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <span className="text-xl font-bold cursor-pointer">Edgardo G.</span>
+        <img src="/logo.webp" alt="Origami Crane Logo" className={styles.logo}/>
       </Link>
       <button onClick={toggleTheme} className={styles.toggleButton}>
         {theme === "light" ? (

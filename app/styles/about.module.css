@@ -1,0 +1,111 @@
+.container {
+  min-height: auto;
+  color: var(--text-color);
+  background-size: 200% 200%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background: var(--noise);
+  background-repeat: repeat;
+  background-size: auto;
+  z-index: -1;
+}
+
+.container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  min-height: 100%;
+  background: var(--gradient);
+  background-size: 200% 200%;
+  z-index: -2;
+}
+
+/* Card estilo consistente con tu estética glass */
+.card {
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.kickerLine {
+  width: auto;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(251, 157, 92, 0.95);
+}
+
+.h2 {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
+}
+
+.link {
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.bulletLabel {
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.cta {
+  border-radius: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.primaryBtn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.18);
+}
+
+.primaryBtn:hover {
+  filter: brightness(1.03);
+}
+
+.secondaryBtn {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--btn-secondary-border);
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.secondaryBtn:hover {
+  background: rgba(245, 158, 11, 0.08);
+}

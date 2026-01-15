@@ -37,7 +37,11 @@ export default function Home() {
                     See My Projects
                 </Link>
 
-                <Link href="/#contact" className={styles.secondaryButton}>
+                <Link href="/about" className={styles.secondaryButton}>
+                  About
+                </Link>
+
+                <Link href="https://www.linkedin.com/in/maliceedg/" className={styles.secondaryButton}>
                   Contact
                 </Link>
               </motion.div>

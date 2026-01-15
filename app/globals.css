@@ -33,14 +33,16 @@
   --btn-primary-text: #111827;
   --btn-primary-shadow: 0 10px 30px rgba(251, 157, 92, 0.25);
   --btn-primary-shadow-hover: 0 14px 38px rgba(251, 157, 92, 0.32);
-
   --btn-secondary-bg: transparent;
   --btn-secondary-bg-hover: rgba(251, 157, 92, 0.08);
   --btn-secondary-border: rgba(251, 157, 92, 0.8);
   --btn-secondary-text: rgba(17, 24, 39, 0.85);
   --btn-secondary-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.06);
-
   --btn-focus-ring: rgba(251, 157, 92, 0.55);
+
+  /* Chip */
+  --chip-bg: rgba(255, 255, 255, 0.10);
+  --chip-border: rgb(229, 231, 235);
 }
 
 .dark {
@@ -62,7 +64,6 @@
   --code-inset: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   --status-label: rgba(255, 255, 255, 0.8);
   --status-value: rgba(255, 255, 255, 0.8);
-
   --code-num: rgba(255, 255, 255, 0.25);
   --code-plain: rgba(255, 255, 255, 0.8);
   --code-kw: rgba(244, 114, 182, 0.95);
@@ -74,8 +75,12 @@
   --btn-secondary-border: rgba(251, 157, 92, 0.75);
   --btn-secondary-text: rgba(255, 255, 255, 0.85);
   --btn-secondary-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.18);
-
   --btn-focus-ring: rgba(251, 157, 92, 0.55);
+
+  
+  /* Chip */
+  --chip-bg: rgba(255, 255, 255, 0.1);
+  --chip-border: rgb(229, 231, 235, 0.1);
 }
 
 body {

@@ -9,10 +9,23 @@
 
   --background-color: #ffffff;
   --text-color: #000000;
-  --card-bg: rgba(255, 255, 255, .1);
+  --card-bg: rgba(255, 255, 255, 0.1);
   --gradient: linear-gradient(45deg, #8b95a0, #d5d5d5, #a4afba, #7b858e);
   --shapes: url("/light-shapes.svg");
   --noise: url("/noise-texture.png");
+
+  --code-bg: rgba(255, 255, 255, 0.55);
+  --status-bg: rgba(255, 255, 255, 0.55);
+  --code-border: rgba(0, 0, 0, 0.1);
+  --code-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  --code-inset: inset 0 0 0 1px rgba(0, 0, 0, 0.04);
+  --status-label: rgba(0, 0, 0);
+  --status-value: rgba(0, 0, 0);
+
+  --code-num: rgba(0, 0, 0, 0.35);
+  --code-plain: rgba(0, 0, 0, 0.82);
+  --code-kw: rgba(190, 24, 93, 0.95);
+  --code-id: rgba(2, 132, 199, 0.95);
 }
 
 .dark {
@@ -26,6 +39,19 @@
   --gradient: linear-gradient(45deg, #040608, #161f28, #1e262f, #090c10);
   --shapes: url("/dark-shapes.svg");
   --noise: url("/noise-texture.png");
+
+  --code-bg: rgba(25, 30, 40, 0.22);
+  --status-bg: rgba(25, 30, 40, 0.22);
+  --code-border: rgba(255, 255, 255, 0.16);
+  --code-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+  --code-inset: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --status-label: rgba(255, 255, 255, 0.8);
+  --status-value: rgba(255, 255, 255, 0.8);
+
+  --code-num: rgba(255, 255, 255, 0.25);
+  --code-plain: rgba(255, 255, 255, 0.8);
+  --code-kw: rgba(244, 114, 182, 0.95);
+  --code-id: rgba(147, 197, 253, 0.95);
 }
 
 body {

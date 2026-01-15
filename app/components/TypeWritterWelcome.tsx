@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "../styles/welcome.module.css";
 
@@ -6,40 +6,46 @@ const TypewriterWelcome = () => {
   const [welcomeText, setWelcomeText] = useState("");
   const [portfolioText, setPortfolioText] = useState("");
   const [welcomeComplete, setWelcomeComplete] = useState(false);
-  const [portfolioComplete, setPortfolioComplete] = useState(false);
 
   useEffect(() => {
+    let cancelled = false;
+
+    const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+
     const typeWelcome = async () => {
-      const text = "Welcome";
+      const text = "Start building";
       setWelcomeText("");
+      setWelcomeComplete(false);
 
       for (let i = 0; i < text.length; i++) {
-        await new Promise((resolve) => setTimeout(resolve, 80));
-        setWelcomeText(text.substring(0, i + 1));
+        await sleep(80);
+        if (cancelled) return;
+        setWelcomeText(text.slice(0, i + 1));
       }
 
-      setWelcomeComplete(true);
+      if (!cancelled) setWelcomeComplete(true);
     };
 
     const typePortfolio = async () => {
-      const text = "to My Portfolio";
+      const text = "Digital experiences that matter";
       setPortfolioText("");
 
       for (let i = 0; i < text.length; i++) {
-        await new Promise((resolve) => setTimeout(resolve, 60));
-        setPortfolioText(text.substring(0, i + 1));
+        await sleep(60);
+        if (cancelled) return;
+        setPortfolioText(text.slice(0, i + 1));
       }
-
-      setPortfolioComplete(true);
     };
 
     typeWelcome();
-
-    const portfolioTimeout = setTimeout(() => {
-      typePortfolio();
+    const timeout = setTimeout(() => {
+      void typePortfolio();
     }, 1200);
 
-    return () => clearTimeout(portfolioTimeout);
+    return () => {
+      cancelled = true;
+      clearTimeout(timeout);
+    };
   }, []);
 
   return (
@@ -48,23 +54,25 @@ const TypewriterWelcome = () => {
       animate="visible"
       transition={{ duration: 1, ease: "easeOut" }}
     >
-      <h1 className="flex flex-col mb-6">
-        <span className="text-2xl font-light relative">
-          <span className="inline-block">{welcomeText}</span>
-          {!welcomeComplete ||
-          (welcomeComplete && portfolioText.length === 0) ? (
-            <span
-              className={`${styles.animateBlink} transition-opacity duration-300`}
-            >
-              |
-            </span>
-          ) : null}
+      {/* Eyebrow / kicker (más legible) */}
+      <p className={styles.heroEyebrow}>
+        <span
+          className={`${styles.inlineBlock} ${
+            !welcomeComplete ? styles.withCursor : ""
+          }`}
+        >
+          {welcomeText}
         </span>
-        <span className="text-2xl font-bold relative">
-          <span className="inline-block">{portfolioText}</span>
-          {portfolioText.length > 0 && (
-            <span className={styles.animateBlink}>|</span>
-          )}
+      </p>
+
+      {/* Headline principal */}
+      <h1 className={styles.heroTitleMain}>
+        <span
+          className={`${styles.inlineBlock} ${
+            portfolioText.length > 0 ? styles.withCursor : ""
+          }`}
+        >
+          {portfolioText}
         </span>
       </h1>
     </motion.div>

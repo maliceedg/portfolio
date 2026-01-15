@@ -5,10 +5,7 @@
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  background: var(--shapes);
-  background-size: 600% 600%;
-  position: relative;
-  animation: gradientAnimation 15s ease infinite;
+  background-size: 200% 200%;
 }
 
 .container::before {
@@ -35,7 +32,6 @@
   min-height: 100%; /* Ensure the pseudo-element covers at least the viewport height */
   background: var(--gradient);
   background-size: 200% 200%;
-  animation: gradientAnimation 15s ease infinite;
   z-index: -2;
 }
 
@@ -56,6 +52,14 @@
   text-align: center;
   color: var(--text-color);
   max-width: 600px;
+}
+
+.chip {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  background: var(--chip-bg);
+  border: 1px solid var(--chip-border);
 }
 
 @media screen and (max-width: 768px) {

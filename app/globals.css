@@ -26,6 +26,21 @@
   --code-plain: rgba(0, 0, 0, 0.82);
   --code-kw: rgba(190, 24, 93, 0.95);
   --code-id: rgba(2, 132, 199, 0.95);
+
+  /* Buttons */
+  --btn-primary-bg: rgba(251, 157, 92, 0.95);
+  --btn-primary-border: rgba(251, 157, 92, 0.75);
+  --btn-primary-text: #111827;
+  --btn-primary-shadow: 0 10px 30px rgba(251, 157, 92, 0.25);
+  --btn-primary-shadow-hover: 0 14px 38px rgba(251, 157, 92, 0.32);
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-bg-hover: rgba(251, 157, 92, 0.08);
+  --btn-secondary-border: rgba(251, 157, 92, 0.8);
+  --btn-secondary-text: rgba(17, 24, 39, 0.85);
+  --btn-secondary-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.06);
+
+  --btn-focus-ring: rgba(251, 157, 92, 0.55);
 }
 
 .dark {
@@ -52,6 +67,15 @@
   --code-plain: rgba(255, 255, 255, 0.8);
   --code-kw: rgba(244, 114, 182, 0.95);
   --code-id: rgba(147, 197, 253, 0.95);
+
+  /* Buttons */
+  --btn-primary-text: rgba(17, 24, 39, 0.95); /* sigue oscuro sobre naranja */
+  --btn-secondary-bg-hover: rgba(251, 157, 92, 0.12);
+  --btn-secondary-border: rgba(251, 157, 92, 0.75);
+  --btn-secondary-text: rgba(255, 255, 255, 0.85);
+  --btn-secondary-shadow-hover: 0 10px 30px rgba(0, 0, 0, 0.18);
+
+  --btn-focus-ring: rgba(251, 157, 92, 0.55);
 }
 
 body {

@@ -33,13 +33,8 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 4 }}
               >
-                <Link href="/projects" className={styles.glassButton}>
-                  <motion.span
-                    whileHover={{ x: 3 }}
-                    transition={{ duration: 0.2 }}
-                  >
+                <Link href="/projects" className={styles.primaryButton}>
                     See My Projects
-                  </motion.span>
                 </Link>
 
                 <Link href="/#contact" className={styles.secondaryButton}>

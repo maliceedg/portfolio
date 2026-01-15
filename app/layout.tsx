@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import Nav from "@/app/ui/nav";
 import TransitionLayout from "@/app/components/TransitionLayout";
 import "./globals.css";
@@ -23,6 +24,7 @@ export default function RootLayout({
         <div>
           <TransitionLayout>{children}</TransitionLayout>
         </div>
+        <SpeedInsights />
       </body>
     </html>
   );

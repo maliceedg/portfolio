@@ -14,7 +14,7 @@ export default function TransitionLayout({
     <AnimatePresence mode="sync">
       <motion.div
         key={pathname}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: "100%", height: "100%", overflow: "hidden" }}
         initial={{ opacity: 0, y: 30 }}
         animate={{
           opacity: 1,
@@ -22,7 +22,7 @@ export default function TransitionLayout({
           y: 0,
           transitionEnd: { opacity: 1, y: 0 },
         }}
-        exit={{ opacity: 0 }}
+        exit={{ opacity: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
         {children}

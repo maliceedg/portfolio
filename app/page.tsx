@@ -3,7 +3,9 @@
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
-import styles from "../app/styles/welcome.module.css";
+import styles from "./styles/welcome.module.css";
+import TypewriterWelcome from "./components/TypeWritterWelcome";
+import EnhancedCard from "./components/InformationCard";
 
 const AnimatedBackground = () => (
   <svg
@@ -29,22 +31,6 @@ const AnimatedBackground = () => (
   </svg>
 );
 
-const defaultAnimations = {
-  hidden: {
-    opacity: 0,
-    x: -50,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-  },
-};
-
-const letterAnimations = {
-  hidden: { opacity: 0, y: 50, scale: 0.5, rotate: -45 },
-  visible: { opacity: 1, y: 0, scale: 1.2, rotate: 0 },
-};
-
 export default function Home() {
   return (
     <>
@@ -53,49 +39,25 @@ export default function Home() {
         <meta name="description" content="Welcome to my portfolio" />
       </Head>
       <div className={styles.container}>
+        {/* Typewriter welcome animation */}
+        <TypewriterWelcome />
+
+        {/* Enhanced card with interactive effects */}
+        <EnhancedCard />
+
+        {/* Animated button */}
         <motion.div
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 1, ease: "easeOut", staggerChildren: 0.1 }}
+          className="mt-2"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 4 }} // Increased delay to appear after all paragraphs
         >
-          <h1 className="flex flex-col mb-6">
-            <motion.span className="text-2xl font-light">
-              {Array.from("Welcome").map((letter, index) => (
-                <motion.span
-                  key={index}
-                  variants={letterAnimations}
-                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5 }}
-                >
-                  {letter}
-                </motion.span>
-              ))}
+          <Link href="/projects" className={styles.glassButton}>
+            <motion.span whileHover={{ x: 3 }} transition={{ duration: 0.2 }}>
+              See My Projects
             </motion.span>
-            <span className="text-2xl font-bold">to My Portfolio</span>
-          </h1>
+          </Link>
         </motion.div>
-        <motion.div
-          className={styles.card}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 1, ease: "easeOut", staggerChildren: 0.1 }}
-        >
-          <p className="mb-4">
-            My name is Edgardo Gonzalez, a COMPSI Engineer based in Carabobo,
-            Venezuela.
-          </p>
-          <p className="mb-4">
-            I have 7+ years of experience in the development field, in which
-            I've partaken in multiple projects, mostly frontend, from inventory
-            systems to modern LMS platforms.
-          </p>
-          <p>
-            I'm passionate for user-friendly interfaces, quick systems, and
-            clean interfaces.
-          </p>
-        </motion.div>
-        <Link href="/projects" className={styles.glassButton}>
-          See My Projects
-        </Link>
       </div>
     </>
   );

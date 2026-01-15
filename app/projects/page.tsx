@@ -17,11 +17,11 @@ export default function Page({
   const activeProject = projects.find((project) => project.id === param);
 
   return (
-    <motion.main
-      initial={{ y: "100%" }}
+    <main
+      /* initial={{ y: "100%" }}
       animate={{ y: "0%" }}
       transition={{ duration: 0.75, ease: "easeOut" }}
-      exit={{ opacity: 1 }}
+      exit={{ opacity: 1 }} */
       className={styles.container}
       /* className="h-full absolute min-w-full top-0 lg:pt-40 pt-28 lg:p-0 p-5 overflow-auto" */
     >
@@ -94,6 +94,6 @@ export default function Page({
           </>
         )}
       </div>
-    </motion.main>
+    </main>
   );
 }

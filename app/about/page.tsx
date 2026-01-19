@@ -9,31 +9,40 @@ export default function AboutPage() {
       <div className="container mx-auto max-w-6xl md:mt-32 mt-16 lg:p-4 md:p-3 p-5">
         <header className="w-full">
           <div className="flex gap-4 mb-4">
-            <Link href="/projects" className="opacity-80">
+            <Link href="/" className="opacity-80">
               Home
             </Link>
-            <p className="opacity-90">
+            <span className="opacity-90">
               About
               <div className={styles.kickerLine} />
-            </p>
+            </span>
           </div>
 
           <div className="flex flexwrap gap-6 items-center">
-            <Image src="/profile-pic.png" alt="Profile" className="w-32 h-32 border border-white/15 rounded-full" />
+            <Image
+              src="/profile-pic.png"
+              alt="Profile"
+              width={128}
+              height={128}
+              className="border border-white/20 rounded-full"
+              priority
+            />
 
             <div>
               <h1 className="text-4xl leading-tight">
-                Building user-facing products with clean UI systems and
-                performance in mind.
+                Designing and building user-facing products with scalable UI
+                systems and performance in mind.
               </h1>
 
               <p
                 className={`${inter.className} mt-6 leading-relaxed opacity-90`}
               >
-                I’m Edgardo Gonzalez, a COMPSI Engineer based in Carabobo,
-                Venezuela. I build frontend-focused products from landing
-                experiences to platforms, with emphasis on maintainability, UX,
-                and speed.
+                I'm Edgardo Gonzalez, a COMPSI Engineer based in Carabobo,
+                Venezuela. I work on frontend-focused products ranging from
+                landing experiences to full platforms, combining UI
+                architecture, UX thinking, and performance-oriented
+                implementation. My background allows me to bridge design
+                decisions with real-world technical constraints.
               </p>
             </div>
           </div>
@@ -44,17 +53,22 @@ export default function AboutPage() {
           <section className="lg:col-span-7 min-w-0">
             <div className={styles.card}>
               <h2 className={styles.h2}>What I do</h2>
-              <ul className="list-disc pl-5 space-y-2 opacity-90">
+              <ul className="list-disc pl-5 space-y-3 opacity-90">
                 <li>
-                  Design and implement UI architecture for scalable products.
+                  Design and implement scalable UI architectures for
+                  production-ready web products.
                 </li>
                 <li>
-                  Improve performance and perceived speed on real interfaces.
+                  Improve performance and perceived speed on real user
+                  interfaces.
                 </li>
-                <li>Translate requirements into clean, reusable components.</li>
                 <li>
-                  Ship polished experiences with clear UX and strong
-                  fundamentals.
+                  Translate business and product requirements into clean,
+                  reusable components.
+                </li>
+                <li>
+                  Build polished experiences with strong UX fundamentals and
+                  maintainable codebases.
                 </li>
               </ul>
             </div>
@@ -64,19 +78,20 @@ export default function AboutPage() {
               <ul className="space-y-3 opacity-90">
                 <li>
                   <span className={styles.bulletLabel}>Clarity:</span> readable
-                  code and predictable UI.
+                  code, predictable UI behavior, and clear user flows.
                 </li>
                 <li>
-                  <span className={styles.bulletLabel}>Pragmatism:</span> ship
-                  value without overengineering.
+                  <span className={styles.bulletLabel}>Pragmatism:</span>{" "}
+                  shipping value without overengineering or unnecessary
+                  complexity.
                 </li>
                 <li>
                   <span className={styles.bulletLabel}>Quality:</span>{" "}
-                  performance, accessibility, and consistency.
+                  performance, accessibility, and consistency across devices.
                 </li>
                 <li>
-                  <span className={styles.bulletLabel}>Ownership:</span> I close
-                  loops and document decisions.
+                  <span className={styles.bulletLabel}>Ownership:</span> closing
+                  loops, documenting decisions, and supporting what I ship.
                 </li>
               </ul>
             </div>
@@ -108,11 +123,20 @@ export default function AboutPage() {
                 <Link href="/projects" className={styles.link}>
                   View Projects →
                 </Link>
-                <Link href="/contact" className={styles.link}>
+                <Link
+                  href="https://www.linkedin.com/in/maliceedg/"
+                  className={styles.link}
+                >
                   Contact →
                 </Link>
-                {/* Si tienes CV, habilítalo */}
-                {/* <a href="/resume.pdf" className={styles.link} target="_blank" rel="noreferrer">Resume →</a> */}
+                <a
+                  href="/UX_UI Designer – D2C & Conversion-Focused Web Experiences.pdf"
+                  className={styles.link}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Resume →
+                </a>
               </div>
             </div>
 
@@ -120,8 +144,17 @@ export default function AboutPage() {
               <h2 className={styles.h2}>Quick facts</h2>
               <ul className="mt-4 space-y-2 opacity-90">
                 <li>Location: Carabobo, VE</li>
-                <li>Experience: 7+ years</li>
-                <li>Work style: async-friendly, structured delivery</li>
+                <li>
+                  Experience: 7+ years across frontend, UX/UI, and web systems
+                </li>
+                <li>
+                  Languages: English (native), Spanish (native), Portuguese
+                  (learning)
+                </li>
+                <li>
+                  Work style: async-friendly, structured delivery, clear
+                  communication
+                </li>
               </ul>
             </div>
           </aside>
@@ -136,14 +169,18 @@ export default function AboutPage() {
               <p
                 className={`${inter.className} mt-3 opacity-90 leading-relaxed`}
               >
-                If you want to discuss a project, collaboration, or a role, feel
-                free to reach out.
+                If you want to discuss a project, collaboration, or role, feel
+                free to reach out. I’m always open to meaningful work where
+                product quality and user experience matter.
               </p>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link href="/projects" className={styles.primaryBtn}>
                   See Projects
                 </Link>
-                <Link href="https://www.linkedin.com/in/maliceedg/" className={styles.secondaryBtn}>
+                <Link
+                  href="https://www.linkedin.com/in/maliceedg/"
+                  className={styles.secondaryBtn}
+                >
                   Contact
                 </Link>
               </div>

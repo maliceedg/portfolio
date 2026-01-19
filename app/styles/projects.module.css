@@ -62,6 +62,13 @@
   border: 1px solid var(--chip-border);
 }
 
+.kickerLine {
+  width: auto;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(251, 157, 92, 0.95);
+}
+
 @media screen and (max-width: 768px) {
   .container {
     padding-bottom: 4rem;

@@ -1,181 +1,340 @@
 "use client";
 
-import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
-import { inter } from "../ui/fonts";
+import Image from "next/image";
+import { motion } from "framer-motion";
+
 import { projects } from "@/app/lib/projects";
 import styles from "../styles/projects.module.css";
 
-export default function Page({
-  searchParams,
-}: {
-  readonly searchParams: { readonly project?: string };
-}) {
-  const param = searchParams.project;
-  const activeProject = projects.find((project) => project.id === param);
+type ProjectsPageProps = {
+  readonly searchParams?: { readonly project?: string | string[] };
+};
+
+function normalizeProjectId(input?: string | string[]) {
+  const raw = Array.isArray(input) ? input[0] : input;
+  if (!raw) return undefined;
+
+  const decoded = (() => {
+    try {
+      return decodeURIComponent(raw);
+    } catch {
+      return raw;
+    }
+  })();
+
+  const trimmed = decoded.trim();
+  return trimmed.length ? trimmed : undefined;
+}
+
+export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
+  const activeId = normalizeProjectId(searchParams?.project);
+  const hasActiveId = Boolean(activeId);
+
+  const activeProject = hasActiveId
+    ? projects.find((p) => p.id === activeId)
+    : undefined;
+
+  const sections = activeProject?.caseStudy?.sections;
+
+  let content: React.ReactNode = null;
+  if (activeProject) {
+    content = (
+      <>
+        {/* Detail for activeProject */}
+        <section className="space-y-10">
+          {/* Header */}
+          <div className="flex items-start justify-between flex-wrap gap-6">
+            <div className="min-w-0">
+              <Link href="/projects" className="inline-block opacity-80">
+                ← Back to Projects
+              </Link>
+
+              <h1 className="text-4xl mt-3">{activeProject.name}</h1>
+
+              {activeProject.caseStudy?.roleMeta ? (
+                <p className="opacity-80 mt-2">
+                  {activeProject.caseStudy.roleMeta}
+                </p>
+              ) : null}
+
+              {activeProject.url ? (
+                <a
+                  href={activeProject.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-block mt-3 text-sm opacity-80 hover:opacity-100 underline underline-offset-4"
+                >
+                  Visit live site →
+                </a>
+              ) : null}
+            </div>
+
+            <div className="shrink-0">
+              <Image
+                src={activeProject.logo}
+                width={220}
+                height={90}
+                alt={`${activeProject.name} logo`}
+                className="h-auto w-auto max-w-[220px]"
+                priority
+              />
+            </div>
+          </div>
+
+          {/* Summary */}
+          <p className="opacity-90 leading-relaxed max-w-3xl">
+            {activeProject.description}
+          </p>
+
+          {/* Tags */}
+          {activeProject.caseStudy?.stack?.length ? (
+            <div className="flex flex-wrap gap-2">
+              {activeProject.caseStudy.stack.map((tag) => (
+                <span
+                  key={tag}
+                  className="px-3 py-1 rounded-full text-sm bg-white/10 border border-white/15"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          ) : null}
+
+          {/* Case Study (this is the content you were missing) */}
+          {sections ? (
+            <section
+              className={[
+                "rounded-2xl border border-white/15 bg-white/10 backdrop-blur-lg",
+                "p-6 md:p-8",
+              ].join(" ")}
+            >
+              <div className="flex items-center justify-between gap-4 flex-wrap">
+                <h2 className="text-xl font-semibold">Case study</h2>
+                <span className="text-xs opacity-70">Context → Outcome</span>
+              </div>
+
+              <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Context */}
+                {sections.context ? (
+                  <div className="lg:col-span-2">
+                    <h3 className="text-sm font-semibold tracking-wide uppercase opacity-90">
+                      Context
+                    </h3>
+                    <p className="mt-2 opacity-90 leading-relaxed">
+                      {sections.context}
+                    </p>
+                  </div>
+                ) : null}
+
+                {/* Challenge */}
+                {sections.challenge ? (
+                  <div>
+                    <h3 className="text-sm font-semibold tracking-wide uppercase opacity-90">
+                      The challenge
+                    </h3>
+                    <p className="mt-2 opacity-90 leading-relaxed">
+                      {sections.challenge}
+                    </p>
+                  </div>
+                ) : null}
+
+                {/* Key Decisions */}
+                {Array.isArray(sections.decisions) &&
+                sections.decisions.length ? (
+                  <div>
+                    <h3 className="text-sm font-semibold tracking-wide uppercase opacity-90">
+                      Key decisions
+                    </h3>
+                    <ul className="mt-3 list-disc pl-5 space-y-2 opacity-90">
+                      {sections.decisions.map((d) => (
+                        <li key={d}>{d}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                {/* Implementation */}
+                {sections.implementation ? (
+                  <div className="lg:col-span-2">
+                    <h3 className="text-sm font-semibold tracking-wide uppercase opacity-90">
+                      Implementation
+                    </h3>
+                    <p className="mt-2 opacity-90 leading-relaxed">
+                      {sections.implementation}
+                    </p>
+                  </div>
+                ) : null}
+
+                {/* Outcome */}
+                {sections.outcome ? (
+                  <div className="lg:col-span-2">
+                    <h3 className="text-sm font-semibold tracking-wide uppercase opacity-90">
+                      Outcome
+                    </h3>
+                    <p className="mt-2 opacity-90 leading-relaxed">
+                      {sections.outcome}
+                    </p>
+                  </div>
+                ) : null}
+              </div>
+            </section>
+          ) : null}
+
+          {/* Images */}
+          <section className="space-y-4">
+            <h2 className="text-xl font-semibold">Visual references</h2>
+
+            <div className="flex flex-col gap-10">
+              {activeProject.images && activeProject.images.length > 0 ? (
+                activeProject.images.map((img, i) => (
+                  <Image
+                    key={`${activeProject.id}-${i}`}
+                    src={img.imageUrl}
+                    width={1200}
+                    height={800}
+                    alt={img.alt}
+                    className="rounded-xl border border-white/10 shadow max-w-full h-auto"
+                    loading={i === 0 ? "eager" : "lazy"}
+                  />
+                ))
+              ) : (
+                <div className="rounded-xl border border-white/10 bg-white/5 p-8 text-center">
+                  <p className="text-sm opacity-80">
+                    Visual references are not available for this project.
+                  </p>
+                  <p className="mt-2 text-xs opacity-60">
+                    Some work involved internal tools, documentation, or
+                    non-public systems.
+                  </p>
+                </div>
+              )}
+            </div>
+          </section>
+        </section>
+      </>
+    );
+  } else if (hasActiveId) {
+    content = (
+      /* Has ?project=... but no match */
+      <section className="rounded-2xl border border-white/15 bg-white/10 backdrop-blur-lg p-6">
+        <h1 className="text-2xl font-semibold">Project not found</h1>
+        <p className="opacity-80 mt-2">
+          No project matches: <span className="font-mono">{activeId}</span>
+        </p>
+        <div className="mt-5">
+          <Link href="/projects" className="inline-block opacity-90">
+            ← Back to Projects
+          </Link>
+        </div>
+      </section>
+    );
+  } else {
+    content = (
+      <>
+        {/* Grid */}
+        <header className="mb-10">
+          <h1 className="text-4xl">My Projects</h1>
+          <p className="opacity-80 mt-3 max-w-2xl leading-relaxed">
+            A selection of production work focused on clean UI systems,
+            performance, and maintainable delivery. Each project includes a
+            concise case study and visual references.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <motion.div
+              key={project.id}
+              whileHover={{ y: -4 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.18 }}
+              className="h-full"
+            >
+              <Link
+                href={`/projects?project=${project.id}`}
+                className={[
+                  "group block h-full rounded-2xl",
+                  "flex flex-col",
+                  "bg-white/10 backdrop-blur-lg",
+                  "border border-white/15",
+                  "shadow-sm hover:shadow-md",
+                  "transition-[transform,box-shadow,background-color] duration-200",
+                  "p-5",
+                  "focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30",
+                ].join(" ")}
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <h2 className="text-xl font-semibold leading-snug">
+                    {project.name}
+                  </h2>
+
+                  <div className="inline-flex items-center gap-2 opacity-70 text-sm">
+                    <span className="h-2 w-2 rounded-full bg-white/50" />
+                    <span>Case study</span>
+                  </div>
+                </div>
+
+                <div className="mt-4">
+                  <Image
+                    src={project.logo}
+                    width={260}
+                    height={100}
+                    alt={`${project.name} logo`}
+                    className="h-auto w-auto max-w-[260px]"
+                    loading="lazy"
+                  />
+                </div>
+
+                <p className="mt-4 opacity-85 leading-relaxed text-sm">
+                  {project.description.length > 140
+                    ? `${project.description.slice(0, 140)}...`
+                    : project.description}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {(project.caseStudy?.stack ?? []).slice(0, 4).map((tag) => (
+                    <span key={`${project.id}-${tag}`} className={styles.chip}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-auto pt-6 flex items-center justify-between">
+                  <span className="opacity-80 text-sm">View details →</span>
+
+                  {project.url ? (
+                    <span className="opacity-60 text-xs">
+                      Live: {project.url.replace(/^https?:\/\//, "")}
+                    </span>
+                  ) : (
+                    <span className="opacity-60 text-xs">No public URL</span>
+                  )}
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </>
+    );
+  }
 
   return (
     <main className={styles.container}>
       <div className="container mx-auto max-w-6xl md:mt-32 mt-16 lg:p-4 md:p-3 p-5">
-        {activeProject ? (
-          <div key={activeProject.id}>
-            {/* 1) INTRO / BREADCRUMB + TITLE + META + TAGS + LOGO */}
-            <section className="md:mb-14 mb-10">
-              <Link href="/projects" className="inline-block mb-6">
-                ← Back to Projects
-              </Link>
+        {/* Breadcrumb */}
+        <div className="flex gap-4 mb-8">
+          <Link href="/" className="opacity-80">
+            Home
+          </Link>
+          <span className="opacity-90">
+            Projects
+            <div className={styles.kickerLine} />
+          </span>
+        </div>
 
-              <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
-                {/* Left: title/meta/tags/short description */}
-                <div className="min-w-0">
-                  <h1 className="text-4xl my-2">{activeProject.name}</h1>
-
-                  {activeProject.caseStudy?.roleMeta && (
-                    <p className="opacity-80 mt-2">
-                      {activeProject.caseStudy.roleMeta}
-                    </p>
-                  )}
-
-                  {activeProject.caseStudy?.stack?.length ? (
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {activeProject.caseStudy.stack.map((tag) => (
-                        <span key={tag} className={styles.chip}>
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-
-                  <p
-                    className={`${inter.className} leading-relaxed opacity-90 mt-8 max-w-prose`}
-                  >
-                    {activeProject.description}
-                  </p>
-                </div>
-
-                {/* Right: logo */}
-                <div className="shrink-0">
-                  <Image
-                    src={activeProject.logo}
-                    width={520}
-                    height={420}
-                    alt={`${activeProject.name} Logo`}
-                    className="max-w-full h-auto"
-                    priority
-                  />
-                </div>
-              </div>
-            </section>
-
-            {/* 2) CASE STUDY FULL WIDTH (CON COLUMNA LEGIBLE) */}
-            {activeProject.caseStudy?.sections && (
-              <section className="md:mb-14 mb-10">
-                <div className="h-px w-full bg-white/10 mb-10" />
-
-                {/* “full width” del contenedor, pero texto legible */}
-                <div className="w-full">
-                  <div className="space-y-10">
-                    <section>
-                      <h2 className="text-xl font-semibold mb-2">Context</h2>
-                      <p className="opacity-90 leading-relaxed">
-                        {activeProject.caseStudy.sections.context}
-                      </p>
-                    </section>
-
-                    <section>
-                      <h2 className="text-xl font-semibold mb-2">
-                        The Challenge
-                      </h2>
-                      <p className="opacity-90 leading-relaxed">
-                        {activeProject.caseStudy.sections.challenge}
-                      </p>
-                    </section>
-
-                    <section>
-                      <h2 className="text-xl font-semibold mb-2">
-                        Key Decisions
-                      </h2>
-                      <ul className="list-disc pl-5 space-y-2 opacity-90">
-                        {activeProject.caseStudy.sections.decisions?.map(
-                          (d) => (
-                            <li key={d}>{d}</li>
-                          )
-                        )}
-                      </ul>
-                    </section>
-
-                    <section>
-                      <h2 className="text-xl font-semibold mb-2">
-                        Implementation
-                      </h2>
-                      <p className="opacity-90 leading-relaxed">
-                        {activeProject.caseStudy.sections.implementation}
-                      </p>
-                    </section>
-
-                    <section>
-                      <h2 className="text-xl font-semibold mb-2">Outcome</h2>
-                      <p className="opacity-90 leading-relaxed">
-                        {activeProject.caseStudy.sections.outcome}
-                      </p>
-                    </section>
-                  </div>
-                </div>
-              </section>
-            )}
-
-            {/* 3) GALLERY / IMAGES */}
-            <section className="md:mb-10 mb-6">
-              <div className="h-px w-full bg-white/10 mb-10" />
-
-              {/* Si quieres más ancho para imágenes en desktop */}
-              <div className="flex flex-col gap-10">
-                {activeProject.images.map((image, i) => (
-                  <Image
-                    key={i}
-                    src={image.imageUrl}
-                    width={1100}
-                    height={700}
-                    loading="lazy"
-                    alt={image.alt}
-                    className="mx-auto rounded shadow max-w-full h-auto"
-                  />
-                ))}
-              </div>
-            </section>
-          </div>
-        ) : (
-          <>
-            <h1 className="text-4xl md:mb-16 mb-5">My Projects</h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project) => (
-                <motion.div
-                  key={project.id}
-                  whileHover={{
-                    scale: 1.02,
-                    boxShadow: "0px 8px 20px rgba(0, 0, 0, 0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg border border-white border-opacity-30 rounded p-4 cursor-pointer"
-                >
-                  <Link href={`/projects?project=${project.id}`}>
-                    <h2 className="text-2xl mb-2">{project.name}</h2>
-                    <Image
-                      src={project.logo}
-                      width={300}
-                      height={200}
-                      alt={`${project.name} logo`}
-                      className="mb-2"
-                    />
-                    <p>{project.description.slice(0, 100)}...</p>
-                  </Link>
-                </motion.div>
-              ))}
-            </div>
-          </>
-        )}
+        {/* Detail */}
+        {content}
       </div>
     </main>
   );

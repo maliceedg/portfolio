@@ -36,8 +36,9 @@ export default function Nav() {
   return (
     <nav className={styles.nav}>
       <Link href="/">
-        <Image src="/logo.webp" alt="Origami Crane Logo" className={styles.logo}/>
+        <Image src="/logo.webp" alt="Logo" width={84} height={84} priority />
       </Link>
+
       <button onClick={toggleTheme} className={styles.toggleButton}>
         {theme === "light" ? (
           <svg

@@ -37,7 +37,7 @@ export default function AboutPage() {
               <p
                 className={`${inter.className} mt-6 leading-relaxed opacity-90`}
               >
-                I'm Edgardo Gonzalez, a COMPSI Engineer based in Carabobo,
+                I&apos;m Edgardo Gonzalez, a COMPSI Engineer based in Carabobo,
                 Venezuela. I work on frontend-focused products ranging from
                 landing experiences to full platforms, combining UI
                 architecture, UX thinking, and performance-oriented

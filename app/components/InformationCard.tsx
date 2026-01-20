@@ -54,7 +54,7 @@ const EnhancedCard = () => {
       <div className={styles.cardBorder}></div>
 
       {/* Card content with staggered animations */}
-      <div className={styles.cardContent}>
+      <div className="text-sm md:text-base">
         <motion.p
           className="mb-4"
           custom={0}

@@ -42,7 +42,7 @@ export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
     content = (
       <>
         {/* Detail for activeProject */}
-        <section className="space-y-10">
+        <section className="space-y-12">
           {/* Header */}
           <div className="flex items-start justify-between flex-wrap gap-6">
             <div className="min-w-0">
@@ -321,7 +321,7 @@ export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
 
   return (
     <main className={styles.container}>
-      <div className="container mx-auto max-w-6xl md:mt-32 mt-16 lg:p-4 md:p-3 p-5">
+      <div className="container mx-auto max-w-6xl md:mt-32 mt-24 lg:p-4 md:p-3 p-5">
         {/* Breadcrumb */}
         <div className="flex gap-4 mb-8">
           <Link href="/" className="opacity-80">

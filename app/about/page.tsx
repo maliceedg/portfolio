@@ -6,7 +6,7 @@ import Image from "next/image";
 export default function AboutPage() {
   return (
     <main className={styles.container}>
-      <div className="container mx-auto max-w-6xl md:mt-32 mt-16 lg:p-4 md:p-3 p-5">
+      <div className="container mx-auto max-w-6xl md:mt-32 mt-24 lg:p-4 md:p-3 p-5">
         <header className="w-full">
           <div className="flex gap-4 mb-4">
             <Link href="/" className="opacity-80">

@@ -25,8 +25,8 @@ const EnhancedCard = () => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: 3 + i * 0.2,
-        duration: 0.4,
+        delay: 3 + i * 0.3,
+        duration: 0.6,
         ease: "easeOut",
       },
     }),
@@ -38,7 +38,7 @@ const EnhancedCard = () => {
       className={styles.enhancedCard}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 2.5 }}
+      transition={{ duration: 0.3, delay: 2 }}
       onMouseMove={handleMouseMove}
       whileHover={{ scale: 1.02 }}
     >

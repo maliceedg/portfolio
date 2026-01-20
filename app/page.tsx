@@ -31,7 +31,7 @@ export default function Home() {
                 className={styles.ctaRow}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 4 }}
+                transition={{ duration: 0.6, delay: 4.5 }}
               >
                 <Link href="/projects" className={styles.primaryButton}>
                     See My Projects

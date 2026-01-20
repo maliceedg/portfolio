@@ -22,7 +22,7 @@ export default function HeroVisual() {
         className={styles.codeCard}
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        transition={{ duration: 0.6, delay: 3.5 }}
         whileHover={{ scale: 1.01 }}
       >
         <div className={styles.codeTopBar}>
@@ -57,7 +57,7 @@ export default function HeroVisual() {
         className={styles.statusCard}
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
+        transition={{ duration: 0.6, delay: 4 }}
       >
         <div className={styles.statusIcon} />
         <div>

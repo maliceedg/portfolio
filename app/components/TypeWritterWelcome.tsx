@@ -18,7 +18,7 @@ const TypewriterWelcome = () => {
       setWelcomeComplete(false);
 
       for (let i = 0; i < text.length; i++) {
-        await sleep(80);
+        await sleep(30);
         if (cancelled) return;
         setWelcomeText(text.slice(0, i + 1));
       }

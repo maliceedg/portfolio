@@ -1,8 +1,6 @@
 .container {
   min-height: auto;
   color: var(--text-color);
-  background-size: 200% 200%;
-  animation: gradientAnimation 15s ease infinite;
 }
 
 .container::before {

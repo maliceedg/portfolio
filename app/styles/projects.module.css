@@ -4,8 +4,7 @@
   align-items: start;
   justify-content: center;
   width: 100%;
-  min-height: 100vh;
-  background-size: 200% 200%;
+  height: 100%;
 }
 
 .container::before {

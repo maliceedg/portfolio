@@ -8,7 +8,7 @@ export default function AboutPage() {
     <main className={styles.container}>
       <div className="container mx-auto max-w-6xl md:mt-32 mt-24 lg:p-4 md:p-3 p-5">
         <header className="w-full">
-          <div className="flex gap-4 mb-4">
+          <div className="flex gap-4 mb-8">
             <Link href="/" className="opacity-80">
               Home
             </Link>
@@ -18,25 +18,25 @@ export default function AboutPage() {
             </span>
           </div>
 
-          <div className="flex flexwrap gap-6 items-center">
-            <Image
-              src="/profile-pic.png"
-              alt="Profile"
-              width={128}
-              height={128}
-              className="border border-white/20 rounded-full"
-              priority
-            />
+          <div className="flex flex-col gap-6 md:flex-row md:items-start">
+            <div className="flex justify-center md:justify-start md:shrink-0">
+              <Image
+                src="/profile-pic.png"
+                alt="Profile"
+                width={128}
+                height={128}
+                className="w-28 h-28 md:w-32 md:h-32 border-2 border-white/25 rounded-full"
+                priority
+              />
+            </div>
 
-            <div>
-              <h1 className="text-4xl leading-tight">
+            <div className="min-w-0">
+              <h1 className="text-4xl md:text-5xl leading-tight">
                 Designing and building user-facing products with scalable UI
                 systems and performance in mind.
               </h1>
 
-              <p
-                className={`${inter.className} mt-6 leading-relaxed opacity-90`}
-              >
+              <p className="mt-4 opacity-80 leading-relaxed max-w-prose">
                 I&apos;m Edgardo Gonzalez, a COMPSI Engineer based in Carabobo,
                 Venezuela. I work on frontend-focused products ranging from
                 landing experiences to full platforms, combining UI

@@ -5,32 +5,63 @@ import Link from "next/link";
 import styles from "../styles/nav.module.css";
 import Image from "next/image";
 
+type Theme = "light" | "dark";
+
+const STORAGE_KEY = "theme";
+const MQ = "(prefers-color-scheme: dark)";
+
+function applyTheme(nextTheme: Theme) {
+  if (nextTheme === "dark") {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
+}
+
 export default function Nav() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState<Theme>("light");
 
   useEffect(() => {
-    const storedTheme = localStorage.getItem("theme");
-    if (storedTheme) {
+    const storedTheme = localStorage.getItem(STORAGE_KEY) as Theme | null;
+    const media = window.matchMedia(MQ);
+
+    // If user has a saved preference, use it.
+    if (storedTheme === "light" || storedTheme === "dark") {
       setTheme(storedTheme);
-      if (storedTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
+      applyTheme(storedTheme);
+      return;
+    }
+
+    // Otherwise, default to OS preference.
+    const osTheme: Theme = media.matches ? "dark" : "light";
+    setTheme(osTheme);
+    applyTheme(osTheme);
+
+    // If there's no saved preference, keep following OS changes.
+    const onChange = (e: MediaQueryListEvent) => {
+      const stillNoOverride = !localStorage.getItem(STORAGE_KEY);
+      if (!stillNoOverride) return;
+
+      const next: Theme = e.matches ? "dark" : "light";
+      setTheme(next);
+      applyTheme(next);
+    };
+
+    // Safari fallback: addListener/removeListener
+    if (typeof media.addEventListener === "function") {
+      media.addEventListener("change", onChange);
+      return () => media.removeEventListener("change", onChange);
     } else {
-      document.documentElement.classList.remove("dark");
+      media.addListener(onChange);
+      return () => media.removeListener(onChange);
     }
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
+    const newTheme: Theme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    if (newTheme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    localStorage.setItem(STORAGE_KEY, newTheme);
+    applyTheme(newTheme);
   };
 
   return (

@@ -82,7 +82,7 @@
 }
 
 .heroTitleMain {
-  font-size: 1.50rem;
+  font-size: 1.5rem;
   line-height: 1.15;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -95,48 +95,6 @@
 @keyframes blink {
   to {
     visibility: hidden;
-  }
-}
-
-@media (min-width: 640px) {
-  .heroTitleKicker {
-    font-size: 1.125rem;
-  }
-  .heroTitleMain {
-    font-size: 2.25rem;
-  }
-  .heroEyebrow {
-    font-size: 1.1rem;
-  }
-  .statusCard {
-    left: -12px;
-    bottom: -18px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .heroWrap {
-    padding: 7rem 0 4.5rem;
-  }
-  .heroGrid {
-    grid-template-columns: 7fr 5fr;
-    gap: 2rem;
-    align-items: center;
-  }
-  .heroRight {
-    justify-content: flex-end;
-  }
-
-  .heroTitleMain {
-    font-size: 2.75rem;
-  }
-  .heroEyebrow {
-    font-size: 1.2rem;
-  }
-  .codeText {
-    white-space: pre;
-    overflow-wrap: normal;
-    word-break: normal;
   }
 }
 
@@ -165,8 +123,12 @@
   text-decoration: none;
   user-select: none;
 
-  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease,
-    border-color 0.2s ease, color 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .buttonBase:active {
@@ -274,8 +236,9 @@
 }
 
 .codeBody {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
   font-size: 0.9rem;
   line-height: 1.65;
 }
@@ -322,9 +285,9 @@
 }
 
 .statusCard {
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
   display: flex;
   gap: 10px;
   align-items: center;
@@ -344,6 +307,20 @@
   background: rgba(34, 197, 94, 0.18);
   border: 1px solid rgba(34, 197, 94, 0.25);
   position: relative;
+  overflow: hidden;
+}
+
+.statusIcon::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  transform: translate(-50%, -50%);
+  background: rgba(34, 197, 94, 0.35);
+  animation: statusRipple 1.6s ease-out infinite;
 }
 
 .statusIcon::after {
@@ -352,6 +329,29 @@
   inset: 9px;
   border-radius: 9999px;
   background: rgba(34, 197, 94, 0.8);
+}
+
+@keyframes statusRipple {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.65;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(3.2);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(3.2);
+    opacity: 0;
+  }
+}
+
+/* Respect accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .statusIcon::before {
+    animation: none;
+    opacity: 0;
+  }
 }
 
 .statusLabel {
@@ -377,4 +377,48 @@
   margin-left: 2px;
   animation: blink 1s steps(2, start) infinite;
   vertical-align: baseline;
+}
+
+@media (min-width: 640px) {
+  .heroTitleKicker {
+    font-size: 1.125rem;
+  }
+  .heroTitleMain {
+    font-size: 2.25rem;
+  }
+  .heroEyebrow {
+    font-size: 1.1rem;
+  }
+  .statusCard {
+    position: absolute;
+    left: 0;
+    bottom: 16px;
+    width: 140px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .heroWrap {
+    padding: 7rem 0 4.5rem;
+  }
+  .heroGrid {
+    grid-template-columns: 7fr 5fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .heroRight {
+    justify-content: flex-end;
+  }
+
+  .heroTitleMain {
+    font-size: 2.75rem;
+  }
+  .heroEyebrow {
+    font-size: 1.2rem;
+  }
+  .codeText {
+    white-space: pre;
+    overflow-wrap: normal;
+    word-break: normal;
+  }
 }

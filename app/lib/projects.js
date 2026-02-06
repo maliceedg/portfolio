@@ -1,7 +1,7 @@
 export const projects = [
   {
     id: "pixel",
-    bg: "bg-orange-200",
+    bg: "bg-sky-200",
     name: "PixelUniverse+",
     logo: "/pixel/logo.webp",
     description:
@@ -47,7 +47,7 @@ export const projects = [
   },
   {
     id: "success",
-    bg: "bg-slate-200",
+    bg: "bg-slate-400",
     name: "SuCCESS",
     logo: "/success/logo.png",
     description:
@@ -97,8 +97,63 @@ export const projects = [
     },
   },
   {
+    id: "world-vision",
+    bg: "bg-orange-200",
+    name: "World Vision RD",
+    logo: "/world-vision/logo-white.png",
+    description:
+      "A high-performance donor portal and corporate website built on HubSpot CMS, focusing on accessibility, cross-device compatibility, and seamless CRM integration.",
+    url: "https://worldvision.org.do/",
+    images: [
+      {
+        imageUrl: "/world-vision/hero.png",
+        alt: "Landing hero and value proposition",
+      },
+      {
+        imageUrl: "/world-vision/hero-2.png",
+        alt: "Donation landing and donation form",
+      },
+      {
+        imageUrl: "/world-vision/boxes.png",
+        alt: "Custom info boxes",
+      },
+      {
+        imageUrl: "/world-vision/metrics.png",
+        alt: "Metrics and impact-focused content section",
+      },
+      {
+        imageUrl: "/world-vision/blog.png",
+        alt: "Blog section made with a custom HubL module",
+      },
+    ],
+    caseStudy: {
+      roleMeta: "Lead Frontend Developer · Custom CMS Architecture · 2023",
+      stack: [
+        "HubSpot CMS Hub",
+        "Vanilla JavaScript",
+        "Custom HubL Modules",
+        "CRM Integration",
+      ],
+      sections: {
+        context:
+          "World Vision Dominican Republic is a global humanitarian organization. They needed a robust digital presence to manage donor relations and program visibility, requiring a platform that balances institutional trust with high-end technical performance.",
+        challenge:
+          "Develop a fully customized donor portal within the HubSpot ecosystem that bypasses standard template limitations. The goal was to ensure 100% compatibility across all browsers and low-end mobile devices while maintaining a premium look and feel.",
+        decisions: [
+          "Opted for pure JS, HTML, and CSS instead of heavy frameworks to guarantee maximum loading speed and accessibility.",
+          "Engineered a library of reusable 'Custom Modules' to empower the marketing team to manage content without technical assistance.",
+          "Implemented a mobile-first UI strategy to cater to the diverse device landscape of the Caribbean region.",
+        ],
+        implementation:
+          "I architected the frontend entirely from scratch using HubSpot’s HubL and modern web standards. I focused on creating a seamless bridge between the CRM data and the user interface, ensuring that donor interactions were reflected in real-time while keeping the codebase lightweight and maintainable.",
+        outcome:
+          "A highly scalable, accessible, and fast-loading portal that strengthened donor trust. The solution provided the organization with full autonomy over their content and a significant improvement in mobile user engagement.",
+      },
+    },
+  },
+  {
     id: "hiscore",
-    bg: "bg-slate-200",
+    bg: "bg-stone-200",
     name: "HiScore Labs",
     logo: "/hiscore/logo.png", // adjust
     description:

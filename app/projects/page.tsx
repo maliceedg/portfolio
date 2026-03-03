@@ -281,7 +281,7 @@ export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
                     width={260}
                     height={100}
                     alt={`${project.name} logo`}
-                    className="h-auto w-auto max-w-[260px]"
+                    className="h-auto w-auto max-h-[100px] max-w-[260px]"
                     loading="lazy"
                   />
                 </div>

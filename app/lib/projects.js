@@ -100,7 +100,7 @@ export const projects = [
     id: "world-vision",
     bg: "bg-orange-200",
     name: "World Vision RD",
-    logo: "/world-vision/logo-white.png",
+    logo: "/world-vision/logo.png",
     description:
       "A high-performance donor portal and corporate website built on HubSpot CMS, focusing on accessibility, cross-device compatibility, and seamless CRM integration.",
     url: "https://worldvision.org.do/",
@@ -180,6 +180,44 @@ export const projects = [
           "Implemented the page as a performance-conscious marketing build: reusable sections, consistent typography/spacing, responsive layouts, and SEO-friendly structure to support discoverability and lead capture.",
         outcome:
           "Delivered a clearer narrative for the studio’s value proposition, improved the scan-ability of the service offering, and created a stronger conversion path through consistent calls to action and credibility cues.",
+      },
+    },
+  },
+  {
+    id: "sisqual",
+    bg: "bg-sky-200",
+    name: "Sisqual WFM",
+    logo: "/sisqual/logo.svg",
+    description:
+      "Full performance audit and optimization of a multilingual WordPress site—Lighthouse score improved from 40 to 65, LCP cut by 67%, and TBT reduced by 79% on mobile.",
+    url: "https://sisqualwfm.com",
+    images: [],
+    caseStudy: {
+      roleMeta: "Performance Engineer · WordPress Optimization · 2025",
+      stack: [
+        "WordPress",
+        "Elementor",
+        "Core Web Vitals",
+        "Lighthouse",
+        "Performance Optimization",
+        "PHP",
+      ],
+      sections: {
+        context:
+          "Sisqual WFM's marketing site (sisqualwfm.com) is built on WordPress with Elementor. It was scoring 40/100 on mobile Lighthouse, with LCP around 11 seconds and heavy render-blocking resources. The goal was to improve mobile performance and Core Web Vitals without a full rebuild.",
+        challenge:
+          "The site had multiple bottlenecks: a slow LCP image, ~4.9s of render-blocking CSS/JS, heavy third-party scripts (GTM, Tidio), and optimizations that didn't apply consistently across language versions (/es/, /en/, etc.).",
+        decisions: [
+          "Preload the critical LCP image and inline critical CSS for above-the-fold content.",
+          "Defer non-critical scripts (jQuery, Elementor, Swiper) and move jQuery to the footer.",
+          "Delay Google Tag Manager by 3 seconds to reduce initial blocking.",
+          "Remove Dashicons and WooCommerce scripts on the homepage.",
+          "Apply optimizations globally so all language versions benefit.",
+        ],
+        implementation:
+          "Changes were implemented in the Hello Elementor child theme's functions.php using WordPress hooks. A phased approach covered critical resources, JavaScript loading, third-party scripts, and multilingual behavior. Static flags and global scope ensured consistent behavior across URLs without extra maintenance.",
+        outcome:
+          "Lighthouse performance rose from 40 to 65 (+62.5%). FCP dropped from 14s to 3.0s, LCP from 11.1s to 3.7s, and TBT from 2,020ms to 430ms. CLS improved by 98%. The site now meets Core Web Vitals targets, with better mobile UX and SEO potential, and the optimizations apply automatically to all language versions.",
       },
     },
   },

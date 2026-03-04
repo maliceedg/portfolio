@@ -191,7 +191,16 @@ export const projects = [
     description:
       "Full performance audit and optimization of a multilingual WordPress site—Lighthouse score improved from 40 to 65, LCP cut by 67%, and TBT reduced by 79% on mobile.",
     url: "https://sisqualwfm.com",
-    images: [],
+    images: [
+      {
+        imageUrl: "/sisqual/performance_comparison_bars.png",
+        alt: "Performance bars comparison before and after optimization",
+      },
+      {
+        imageUrl: "/sisqual/performance_radar_chart.png",
+        alt: "Performance radar chart before and after optimization",
+      }
+    ],
     caseStudy: {
       roleMeta: "Performance Engineer · WordPress Optimization · 2025",
       stack: [

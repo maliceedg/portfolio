@@ -2,7 +2,11 @@ import { motion } from "framer-motion";
 import { useState, useRef } from "react";
 import styles from "../styles/welcome.module.css";
 
-const EnhancedCard = () => {
+type EnhancedCardProps = {
+  skipAnimation?: boolean;
+};
+
+const EnhancedCard = ({ skipAnimation = false }: EnhancedCardProps) => {
   // Track mouse position for light effect
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const cardRef = useRef<HTMLDivElement>(null);
@@ -24,11 +28,13 @@ const EnhancedCard = () => {
     visible: (i: number) => ({
       opacity: 1,
       y: 0,
-      transition: {
-        delay: 3 + i * 0.4,
-        duration: 0.6,
-        ease: "easeOut",
-      },
+      transition: skipAnimation
+        ? { duration: 0 }
+        : {
+            delay: 3 + i * 0.4,
+            duration: 0.6,
+            ease: "easeOut",
+          },
     }),
   };
 
@@ -36,9 +42,17 @@ const EnhancedCard = () => {
     <motion.div
       ref={cardRef}
       className={styles.enhancedCard}
-      initial={{ opacity: 0, y: 20 }}
+      initial={skipAnimation ? false : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: 2 }}
+      transition={{
+        opacity: skipAnimation
+          ? { duration: 0 }
+          : { duration: 0.3, delay: 2 },
+        y: skipAnimation
+          ? { duration: 0 }
+          : { duration: 0.3, delay: 2 },
+        scale: { duration: 0.35, ease: "easeInOut" },
+      }}
       onMouseMove={handleMouseMove}
       whileHover={{ scale: 1.02 }}
     >
@@ -58,7 +72,7 @@ const EnhancedCard = () => {
         <motion.p
           className="mb-4"
           custom={0}
-          initial="hidden"
+          initial={skipAnimation ? false : "hidden"}
           animate="visible"
           variants={paragraphVariants}
         >
@@ -69,7 +83,7 @@ const EnhancedCard = () => {
         <motion.p
           className="mb-4"
           custom={1}
-          initial="hidden"
+          initial={skipAnimation ? false : "hidden"}
           animate="visible"
           variants={paragraphVariants}
         >
@@ -80,7 +94,7 @@ const EnhancedCard = () => {
 
         <motion.p
           custom={2}
-          initial="hidden"
+          initial={skipAnimation ? false : "hidden"}
           animate="visible"
           variants={paragraphVariants}
         >

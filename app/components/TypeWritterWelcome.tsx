@@ -2,18 +2,36 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "../styles/welcome.module.css";
 
-const TypewriterWelcome = () => {
-  const [welcomeText, setWelcomeText] = useState("");
-  const [portfolioText, setPortfolioText] = useState("");
-  const [welcomeComplete, setWelcomeComplete] = useState(false);
+const WELCOME_TEXT = "Start building";
+const PORTFOLIO_TEXT = "Digital experiences that matter";
+
+type TypewriterWelcomeProps = {
+  skipAnimation?: boolean;
+};
+
+const TypewriterWelcome = ({ skipAnimation = false }: TypewriterWelcomeProps) => {
+  const [welcomeText, setWelcomeText] = useState(
+    skipAnimation ? WELCOME_TEXT : ""
+  );
+  const [portfolioText, setPortfolioText] = useState(
+    skipAnimation ? PORTFOLIO_TEXT : ""
+  );
+  const [welcomeComplete, setWelcomeComplete] = useState(skipAnimation);
 
   useEffect(() => {
+    if (skipAnimation) {
+      setWelcomeText(WELCOME_TEXT);
+      setPortfolioText(PORTFOLIO_TEXT);
+      setWelcomeComplete(true);
+      return;
+    }
+
     let cancelled = false;
 
     const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
     const typeWelcome = async () => {
-      const text = "Start building";
+      const text = WELCOME_TEXT;
       setWelcomeText("");
       setWelcomeComplete(false);
 
@@ -27,7 +45,7 @@ const TypewriterWelcome = () => {
     };
 
     const typePortfolio = async () => {
-      const text = "Digital experiences that matter";
+      const text = PORTFOLIO_TEXT;
       setPortfolioText("");
 
       for (let i = 0; i < text.length; i++) {
@@ -46,13 +64,17 @@ const TypewriterWelcome = () => {
       cancelled = true;
       clearTimeout(timeout);
     };
-  }, []);
+  }, [skipAnimation]);
 
   return (
     <motion.div
-      initial="hidden"
+      initial={skipAnimation ? false : "hidden"}
       animate="visible"
-      transition={{ duration: 1, ease: "easeOut" }}
+      transition={
+        skipAnimation
+          ? { duration: 0 }
+          : { duration: 1, ease: "easeOut" }
+      }
     >
       {/* Eyebrow / kicker (más legible) */}
       <p className={styles.heroEyebrow}>
@@ -69,7 +91,7 @@ const TypewriterWelcome = () => {
       <h1 className={styles.heroTitleMain}>
         <span
           className={`${styles.inlineBlock} ${
-            portfolioText.length > 0 ? styles.withCursor : ""
+            !skipAnimation && portfolioText.length > 0 ? styles.withCursor : ""
           }`}
         >
           {portfolioText}

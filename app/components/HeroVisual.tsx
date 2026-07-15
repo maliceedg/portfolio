@@ -12,7 +12,11 @@ const lines = [
   { n: "06", rest: "developer.start();" },
 ];
 
-export default function HeroVisual() {
+type HeroVisualProps = {
+  skipAnimation?: boolean;
+};
+
+export default function HeroVisual({ skipAnimation = false }: HeroVisualProps) {
   return (
     <div className={styles.visualWrap} aria-hidden="true">
       <div className={styles.visualGlowA} />
@@ -20,9 +24,17 @@ export default function HeroVisual() {
 
       <motion.div
         className={styles.codeCard}
-        initial={{ opacity: 0, y: 16 }}
+        initial={skipIntroProps(skipAnimation, { opacity: 0, y: 16 })}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 4.5 }}
+        transition={{
+          opacity: skipAnimation
+            ? { duration: 0 }
+            : { duration: 0.6, delay: 4.5 },
+          y: skipAnimation
+            ? { duration: 0 }
+            : { duration: 0.6, delay: 4.5 },
+          scale: { duration: 0.35, ease: "easeInOut" },
+        }}
         whileHover={{ scale: 1.05 }}
       >
         <div className={styles.codeTopBar}>
@@ -55,9 +67,13 @@ export default function HeroVisual() {
 
       <motion.div
         className={styles.statusCard}
-        initial={{ opacity: 0, y: 10 }}
+        initial={skipIntroProps(skipAnimation, { opacity: 0, y: 10 })}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 4.5 }}
+        transition={
+          skipAnimation
+            ? { duration: 0 }
+            : { duration: 0.6, delay: 4.5 }
+        }
       >
         <div className={styles.statusIcon} />
         <div>
@@ -67,4 +83,11 @@ export default function HeroVisual() {
       </motion.div>
     </div>
   );
+}
+
+function skipIntroProps(
+  skipAnimation: boolean,
+  from: { opacity: number; y: number }
+): false | { opacity: number; y: number } {
+  return skipAnimation ? false : from;
 }

@@ -230,4 +230,49 @@ export const projects = [
       },
     },
   },
+  {
+    id: "lighthouse-insights",
+    bg: "bg-orange-100",
+    name: "Lighthouse Insights",
+    logo: "/lighthouse-insights/logo.svg",
+    description:
+      "A client-side Next.js tool that turns raw Lighthouse JSON into a readable dashboard and client-ready PDF/PPTX exports—so analysts can hand prioritized SEO and performance findings to non-technical clients without sharing the dense native report.",
+    url: "https://seo-interpreter.vercel.app/",
+    images: [
+      {
+        imageUrl: "/lighthouse-insights/home.jpeg",
+        alt: "Home page of the tool",
+      },{
+        imageUrl: "/lighthouse-insights/report.jpeg",
+        alt: "Report section ready for export",
+      },
+    ],
+    caseStudy: {
+      roleMeta: "Design + Build · Client SEO Tool · 2026",
+      stack: [
+        "Next.js",
+        "TypeScript",
+        "Tailwind",
+        "Vercel",
+        "Lighthouse",
+        "PPTX",
+      ],
+      sections: {
+        context:
+          "Lighthouse Insights (SEO Interpreter) is a browser-only workflow for consultants and analysts who need to translate Lighthouse audits into something clients can actually read. Paste or upload a Lighthouse JSON report, and the app surfaces category scores, a Top 10 of impactful issues with next steps and evidence, plus diagnostics—then exports a cleaner PDF or PPTX pack for delivery.",
+        challenge:
+          "Raw Lighthouse output is dense, audit-oriented, and hard to hand to non-technical stakeholders as-is. The goal was faster client delivery without a backend, API keys, or sending report data off-device—while keeping the product polished enough to feel client-ready, not like a developer utility.",
+        decisions: [
+          "Kept parsing, scoring presentation, and exports entirely client-side so report data never leaves the browser.",
+          "Prioritized a Top 10 of impactful issues with explanations, next steps, and evidence over a 1:1 dump of every audit.",
+          "Shipped dual export paths: print-stylesheet PDF for quick handoff, and pptxgenjs PPTX for slide-ready client packs.",
+          "Anchored the warm paper UI and orange brand (#fa8f45–#ae510f) to the origami crane logo so the tool feels intentional, not generic.",
+        ],
+        implementation:
+          "Built with Next.js 16 (App Router), React 19, TypeScript, and Tailwind CSS 4, deployed on Vercel from the /web app root. Upload, paste, and drag-drop all feed the same in-browser parser; category score cards cover Performance, Accessibility, Best Practices, and SEO. Brand and credit links point back to this portfolio and GitHub (@maliceedg).",
+        outcome:
+          "Shipped a live, privacy-friendly interpreter that shortens the path from Lighthouse JSON to a client-ready deliverable—dashboard clarity in-session, PDF/PPTX for the handoff, and no server-side report storage to explain or secure.",
+      },
+    },
+  },
 ];
